@@ -1,0 +1,29 @@
+[
+  {
+    "model": "sizeyourdriveapi.donator",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "address":"124 Lemon Street, Brentwood TN, 37027",
+      "phone_number": "858-761-2012"
+    }
+  },
+  {
+    "model": "sizeyourdriveapi.donator",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "address":"124 Broadway Blvd, Brentwood TN, 37027",
+      "phone_number": "858-761-2014"
+    }
+  },
+  {
+    "model": "sizeyourdriveapi.donator",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "address":"123 Main Street, Brentwood TN, 37027",
+      "phone_number": "858-761-2016"
+    }
+  }
+]

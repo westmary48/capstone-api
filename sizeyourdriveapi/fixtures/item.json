@@ -1,0 +1,41 @@
+[
+  {
+    "model": "sizeyourdriveapi.item",
+    "pk": 1,
+    "fields": {
+      "name": "Jeans",
+      "size": "Medium",
+      "description": "New Jeans",
+      "quantity": 1,
+      "created_date": "2019-11-01",
+      "item_category": 1,
+      "donator": 1
+    }
+  },
+  {
+    "model": "sizeyourdriveapi.item",
+    "pk": 2,
+    "fields": {
+      "name": "Socks",
+      "size": "Extra Large",
+      "description": "12 pack of white socks",
+      "quantity": 12,
+      "created_date":"2019-11-01" ,
+      "item_category": 2,
+      "donator": 2
+    }
+  },
+  {
+    "model": "sizeyourdriveapi.item",
+    "pk": 3,
+    "fields": {
+      "name": "Jacket",
+      "size": "Small",
+      "description": "Never Worn",
+      "quantity": 1,
+      "created_date":"2019-11-01" ,
+      "item_category": 3,
+      "donator": 3
+    }
+  }
+]
