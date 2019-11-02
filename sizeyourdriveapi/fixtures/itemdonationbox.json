@@ -1,0 +1,20 @@
+[
+  {
+      "model": "sizeyourdriveapi.itemdonationbox",
+      "pk": 1,
+      "fields": {
+          "donationbox": "1",
+          "item": "1",
+          "quantity": "10"
+      }
+  },
+  {
+      "model": "sizeyourdriveapi.itemdonationbox",
+      "pk": 2,
+      "fields": {
+          "donationbox": "2",
+          "item": "2",
+          "quantity": "20"
+      }
+  }
+]
