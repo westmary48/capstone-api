@@ -37,7 +37,7 @@ class ItemDonationBoxes(ViewSet):
         new_item_donationbox.quantity = request.data["quantity"]
         donator = Donator.objects.get(user=request.auth.user)
         try:
-            newdonationbox = DonationBox.objects.get(donator=donator, payment_type__isnull=True)
+            newdonationbox = DonationBox.objects.get(donator=donator, dropoff__isnull=True)
         except DonationBox.DoesNotExist:
             newdonationbox = DonationBox()
             newdonationbox.created_date = datetime.date.today()

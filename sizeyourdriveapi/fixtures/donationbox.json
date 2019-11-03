@@ -4,7 +4,7 @@
       "pk": 1,
       "fields": {
           "donator": "2",
-          "payment_type_id": "1",
+          "dropoff": "1",
           "created_date": "2019-02-13"
       }
   },
@@ -13,7 +13,7 @@
       "pk": 2,
       "fields": {
           "donator": "1",
-          "payment_type": "2",
+          "dropoff": "2",
           "created_date": "2019-03-13"
       }
   }

@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from sizeyourdriveapi.models import DonationBox, Payment, Donator
+from sizeyourdriveapi.models import DonationBox, Dropoff, Donator
 from .donator import DonatorSerializer
 
 
@@ -23,7 +23,7 @@ class DonationBoxSerializer(serializers.HyperlinkedModelSerializer):
             view_name='donationbox',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'created_date', 'payment_type', "donator")
+        fields = ('id', 'url', 'created_date', 'dropoff', "donator")
         depth = 1
 
 
@@ -63,10 +63,10 @@ class DonationBoxes(ViewSet):
         """
         donated_items = set()
         donationbox = DonationBox.objects.get(pk=pk)
-        payment = Payment.objects.get(pk=request.data["payment_type"])
-        donationbox.payment_type = payment
+        dropoff = Dropoff.objects.get(pk=request.data["dropoff_time"])
+        donationbox.dropoff_time = dropoff
         donationbox.save()
-        if donationbox.payment_type is not "NULL":
+        if donationbox.dropoff_time is not "NULL":
             clothing_items = donationbox.invoiceline.all()
 
             for di in clothing_items:
@@ -107,21 +107,21 @@ class DonationBoxes(ViewSet):
 
         donator = self.request.query_params.get('donator_id', None)
         complete = self.request.query_params.get('complete', None)
-        payment = self.request.query_params.get('payment_id', None)
+        dropoff = self.request.query_params.get('dropoff_id', None)
         if donator is not None:
             if complete == "0":
-                donationboxes = donationboxes.filter(donator__id=donator, payment_type__id__isnull=True)
+                donationboxes = donationboxes.filter(donator__id=donator, dropoff__id__isnull=True)
             if complete == "1":
-                donationboxes = donationboxes.filter(donator__id=donator, payment_type__id__isnull=False)
+                donationboxes = donationboxes.filter(donator__id=donator, dropoff__id__isnull=False)
 
-        if payment is not None:
-            donationboxes = donationboxes.filter(payment_type__id=payment)
+        if dropoff is not None:
+            donationboxes = donationboxes.filter(dropoff__id=dropoff)
         if complete is not None:
             print("hello")
             if complete == "1":
-                donationboxes = donationboxes.filter(payment_type__id__isnull=False)
+                donationboxes = donationboxes.filter(dropoff__id__isnull=False)
             elif complete == "0":
-                donationboxes = donationboxes.filter(payment_type__id__isnull=True)
+                donationboxes = donationboxes.filter(dropoff__id__isnull=True)
 
         serializer = DonationBoxSerializer(
             donationboxes, many=True, context={'request': request})
