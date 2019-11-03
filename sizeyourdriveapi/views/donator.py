@@ -14,11 +14,10 @@ class DonatorSerializer(serializers.HyperlinkedModelSerializer):
     Arguments:
         serializers
     """
-    # Depth of one allows user object to be seen on Donator
     class Meta:
         model = Donator
         url = serializers.HyperlinkedIdentityField(
-            view_name='Donator',
+            view_name='donator',
             lookup_field = 'id'
 
         )
@@ -68,7 +67,9 @@ class Donators(ViewSet):
             Response -- Empty body with 204 status code
         """
         user = User.objects.get(pk=request.auth.user.id)
+        user.first_name = request.data["first_name"]
         user.last_name = request.data["last_name"]
+        user.email = request.data["email"]
         user.save()
 
         donator = Donator.objects.get(user=user)
