@@ -29,7 +29,7 @@ router.register(r'itemdonationboxes', ItemDonationBoxes, 'itemdonationbox')
 router.register(r'donators', Donators, 'donator')
 router.register(r'users', Users, 'user')
 router.register(r'items', Items, 'Item')
-router.register(r'paymenttypes', Payments, 'payment')
+router.register(r'dropoffs', Dropoffs, 'dropoff')
 
 
 urlpatterns = [

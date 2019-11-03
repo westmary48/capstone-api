@@ -1,0 +1,35 @@
+[
+  {
+      "model": "sizeyourdriveapi.dropoff",
+      "pk": 1,
+      "fields": {
+          "name": "Donator Name",
+          "organization": "GoodWill",
+          "donator": "1",
+          "dropoff_date": "2020-01-01",
+          "create_date": "2019-11-11"
+      }
+  },
+  {
+      "model": "sizeyourdriveapi.dropoff",
+      "pk": 2,
+      "fields": {
+          "name": "Whatever Name Works",
+          "organization": "Salvation Army",
+          "donator": "2",
+          "dropoff_date": "2020-02-01",
+          "create_date": "2019-12-12"
+      }
+  },
+  {
+      "model": "sizeyourdriveapi.dropoff",
+      "pk": 3,
+      "fields": {
+          "name": "Type Your Name",
+          "organization": "KARM",
+          "donator": "3",
+          "dropoff_date": "2020-03-01",
+          "create_date": "2019-03-11"
+      }
+  }
+]

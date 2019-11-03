@@ -2,7 +2,7 @@ from .donator import Donators
 from .donationbox import DonationBoxes
 from .register import register_user
 from .register import login_user
-from .paymenttype import Payments
+from .dropoff import Dropoffs
 from .item import Items
 from .itemcategory import ItemCategories
 from .users import Users

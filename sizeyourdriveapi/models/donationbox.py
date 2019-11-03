@@ -1,11 +1,11 @@
 from django.db import models
 from .donator import Donator
-from .payment import Payment
+from .dropoff import Dropoff
 
 
 class DonationBox(models.Model):
     donator = models.ForeignKey(Donator, on_delete=models.DO_NOTHING, related_name="donatordonationbox")
-    payment_type = models.ForeignKey(Payment, on_delete=models.DO_NOTHING, null=True)
+    dropoff = models.ForeignKey(Dropoff, on_delete=models.DO_NOTHING, null=True)
     created_date = models.DateField(default="0000-00-00",)
 
 
