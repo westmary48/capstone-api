@@ -103,7 +103,7 @@ class ItemDonationBoxes(ViewSet):
         itemId = self.request.query_params.get('item_id', None)
         donationbox = self.request.query_params.get('donationbox_id', None)
         if donationbox is not None:
-            ItemDonationBoxes = ItemDonationBoxes.filter(donationbox__id=donationbox)
+            ItemDonationboxes = ItemDonationboxes.filter(donationbox__id=donationbox)
 
 
         if itemId is not None:
