@@ -34,7 +34,7 @@ class ItemDonationBoxes(ViewSet):
         """
         new_item_donationbox = ItemDonationbox()
         new_item_donationbox.item = Item.objects.get(pk=request.data["item"])
-        ew_item_donationbox.quantity = request.data["quantity"]
+        new_item_donationbox.quantity = request.data["quantity"]
         donator = Donator.objects.get(user=request.auth.user)
         try:
             newdonationbox = DonationBox.objects.get(donator=donator, payment_type__isnull=True)
@@ -59,7 +59,7 @@ class ItemDonationBoxes(ViewSet):
             Response -- JSON serialized instance
         """
         try:
-            item_donationbox = Item.objects.get(pk=pk)
+            item_donationbox = ItemDonationbox.objects.get(pk=pk)
             serializer = ItemDonationBoxSerializer(item_donationbox, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
@@ -103,11 +103,11 @@ class ItemDonationBoxes(ViewSet):
         itemId = self.request.query_params.get('item_id', None)
         donationbox = self.request.query_params.get('donationbox_id', None)
         if donationbox is not None:
-            ItemDonationBoxes = ItemDonationBoxes.filter(donationbox__id=donationbox)
+            ItemDonationboxes = ItemDonationboxes.filter(donationbox__id=donationbox)
 
 
         if itemId is not None:
-            ItemDonationboxes = ItemDonationbox.filter(item__id=itemId)
+            ItemDonationboxes = ItemDonationboxes.filter(item__id=itemId)
 
         serializer = ItemDonationBoxSerializer(
             ItemDonationboxes, many=True, context={'request': request})

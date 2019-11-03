@@ -19,6 +19,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from django.contrib import admin
 from sizeyourdriveapi.models import *
 from sizeyourdriveapi.views import *
+from sizeyourdriveapi.views import register_user, login_user
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'items', Items, 'item')
