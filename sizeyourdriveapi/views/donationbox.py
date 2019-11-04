@@ -63,10 +63,10 @@ class DonationBoxes(ViewSet):
         """
         donated_items = set()
         donationbox = DonationBox.objects.get(pk=pk)
-        dropoff = Dropoff.objects.get(pk=request.data["dropoff_time"])
-        donationbox.dropoff_time = dropoff
+        dropoff = Dropoff.objects.get(pk=request.data["dropoff"])
+        donationbox.dropoff = dropoff
         donationbox.save()
-        if donationbox.dropoff_time is not "NULL":
+        if donationbox.dropoff is not "NULL":
             clothing_items = donationbox.invoiceline.all()
 
             for di in clothing_items:
