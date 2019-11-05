@@ -81,13 +81,14 @@ class ItemDonationBoxes(ViewSet):
         Returns:
             Response -- 200, 404, or 500 status code
         """
+
         try:
             item_donationbox = ItemDonationbox.objects.get(pk=pk)
             item_donationbox.delete()
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-        except item_donationbox.DoesNotExist as ex:
+        except ItemDonationbox.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
         except Exception as ex:

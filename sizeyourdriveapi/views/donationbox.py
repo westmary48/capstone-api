@@ -72,12 +72,12 @@ class DonationBoxes(ViewSet):
             for di in clothing_items:
                 donated_items.add(di.item)
 
-            items = list(donated_items)
+            # items = list(donated_items)
 
-            for p in items:
-                num_sold = p.item.filter(donationbox=donationbox).count()
-                p.quantity = p.new_inventory(num_sold)
-                p.save()
+            # for p in items:
+            #     num_sold = p.item.filter(donationbox=donationbox).count()
+            #     p.quantity = p.new_inventory(num_sold)
+            #     p.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
