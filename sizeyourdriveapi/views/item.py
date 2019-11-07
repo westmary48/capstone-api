@@ -76,17 +76,16 @@ class Items(ViewSet):
             Response -- Empty body with 204 status code
         """
         item = Item.objects.get(pk=pk)
-        item.quantity = request.data["quantity"]
-        item.created_date = request.data["created_date"]
         item.name = request.data["name"]
         item.description = request.data["description"]
+        item.quantity = request.data["quantity"]
         item.size = request.data["size"]
 
         donator = Donator.objects.get(user=request.auth.user)
         item.donator = donator
 
 
-        item_category = ItemCategory.objects.get(pk=request.data["item_category_id"])
+        item_category = ItemCategory.objects.get(pk=request.data["item_category"])
         item.item_category = item_category
         item.save()
 
@@ -116,11 +115,11 @@ class Items(ViewSet):
             Response -- JSON serialized list of item
         """
 
-        # items = Item.objects.all()
+
         items = Item.objects.all()
 
 
-        # Support filtering attractions by area id
+
         category = self.request.query_params.get('category', None)
         item_donator = self.request.query_params.get('donator', None)
         quantity = self.request.query_params.get('quantity', None)

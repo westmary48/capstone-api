@@ -63,21 +63,21 @@ class DonationBoxes(ViewSet):
         """
         donated_items = set()
         donationbox = DonationBox.objects.get(pk=pk)
-        dropoff = Dropoff.objects.get(pk=request.data["dropoff_time"])
-        donationbox.dropoff_time = dropoff
+        dropoff = Dropoff.objects.get(pk=request.data["dropoff"])
+        donationbox.dropoff = dropoff
         donationbox.save()
-        if donationbox.dropoff_time is not "NULL":
+        if donationbox.dropoff is not "NULL":
             clothing_items = donationbox.invoiceline.all()
 
             for di in clothing_items:
                 donated_items.add(di.item)
 
-            items = list(donated_items)
+            # items = list(donated_items)
 
-            for p in items:
-                num_sold = p.item.filter(donationbox=donationbox).count()
-                p.quantity = p.new_inventory(num_sold)
-                p.save()
+            # for p in items:
+            #     num_sold = p.item.filter(donationbox=donationbox).count()
+            #     p.quantity = p.new_inventory(num_sold)
+            #     p.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
