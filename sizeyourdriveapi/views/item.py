@@ -115,11 +115,11 @@ class Items(ViewSet):
             Response -- JSON serialized list of item
         """
 
-        # items = Item.objects.all()
+
         items = Item.objects.all()
 
 
-        # Support filtering attractions by area id
+
         category = self.request.query_params.get('category', None)
         item_donator = self.request.query_params.get('donator', None)
         quantity = self.request.query_params.get('quantity', None)
